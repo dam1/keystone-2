@@ -143,6 +143,7 @@ module.exports = Field.create({
 				console.error('Error loading items:', err);
 				return callback(null, []);
 			}
+			data.results.unshift({id:'**empty**',name:'** Empty **'});
 			data.results.forEach(this.cacheItem);
 			callback(null, {
 				options: data.results,

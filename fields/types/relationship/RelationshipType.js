@@ -241,7 +241,11 @@ relationship.prototype.updateItem = function (item, data, callback) {
 		}
 	} else {
 		// Ok, it's one value, should I do anything with it?
-		if (value && value !== item.get(this.path)) {
+
+		if (value && value === '**empty**') {
+			item.set(this.path, null);
+		}
+		else if (value && value !== item.get(this.path)) {
 			// If it's set and has changed, I do.
 			item.set(this.path, value);
 		} else if (!value && item.get(this.path)) {
